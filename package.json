@@ -1,0 +1,26 @@
+{
+  "name": "publicar_express_render",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node index.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/MariaJose-web/publicar_express_render.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "type": "module",
+  "bugs": {
+    "url": "https://github.com/MariaJose-web/publicar_express_render/issues"
+  },
+  "homepage": "https://github.com/MariaJose-web/publicar_express_render#readme",
+  "dependencies": {
+    "cors": "^2.8.6",
+    "express": "^5.2.1"
+  }
+}
