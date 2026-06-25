@@ -6,6 +6,7 @@ const PORT = process.env.PORT || 3000
 
 app.use(cors())
 app.use(express.json())
+app.use(express.urlencoded({extended:true}))
 
 const recetas = [
   {
@@ -43,6 +44,24 @@ app.get("/recetas/:id", (req, res) => {
   res.json(receta)
 });
 
+app.post("/recetas", (req, res) => {
+  const { nombre, ingredientes, tiempoMinutos } = req.body
+
+  if (!nombre || !Array.isArray(ingredientes) || ingredientes.length === 0) {
+    return res.status(400).json({ error: "Datos de receta inválidos" })
+  }
+
+  const nuevaReceta = {
+    id: recetas.length > 0 ? Math.max(...recetas.map((r) => r.id)) + 1 : 1,
+    nombre,
+    ingredientes,
+    tiempoMinutos: tiempoMinutos || 0,
+  }
+
+  recetas.push(nuevaReceta)
+
+  res.status(201).json({ totalRecetas: recetas.length })
+})
 
 app.listen(PORT, () => {
   console.log(`API de recetas activa en http://localhost:${PORT}`)
